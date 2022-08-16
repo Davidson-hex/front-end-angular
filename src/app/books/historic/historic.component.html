@@ -1,0 +1,86 @@
+<app-headers></app-headers>
+<div *ngFor="let hist of historic">
+  <div class="container">
+    <div class="form-group">
+      <div class="col-md-6 offset-md-3 centered">
+        <ul class="list-group">
+          <h4 class="text-center">Movimento de número: {{ hist.id }}</h4>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Id:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.id
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Id do usuário:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.id_usuario
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Id do livro:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.id_livro
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Locação:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.locacao
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Data de locação:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.dt_locacao
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Previsão de devolução:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.previsao_devolucao
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Devolução:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.devolucao
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Data de devolução:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.dt_devolucao
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Status:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              hist.status
+            }}</span>
+          </li>
+        </ul>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

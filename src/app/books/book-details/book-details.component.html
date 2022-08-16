@@ -1,0 +1,78 @@
+<app-headers></app-headers>
+<div *ngIf="book$ | async as book">
+  <div class="container">
+    <div class="form-group">
+      <div class="col-md-6 offset-md-3 centered">
+        <ul class="list-group">
+          <h4 class="text-center">{{ book.titulo }}</h4>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Título:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              book.titulo
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Id do livro:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              book.id
+            }}</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Id do usuário:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              book.id_usuario_cadastro
+            }}</span>
+          </li>
+          <li
+            *ngIf="book.ativo == 1; else status"
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Status:
+            <span class="badge badge-primary badge-pill" style="color: black">{{
+              "ativo"
+            }}</span>
+          </li>
+          <br />
+          <div class="btn-group-vertical" *ngIf="book.ativo == 1">
+            <button
+              class="btn btn-primary"
+              *ngIf="book.id_usuario_cadastro == userId"
+              (click)="inactivate()"
+            >
+              Inativar
+            </button>
+            <br />
+            <button
+              class="btn btn-primary"
+              (click)="rent()"
+              *ngIf="book.ativo == 1"
+            >
+              Locar
+            </button>
+          </div>
+
+          <ng-template #status>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Status:
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ "inativo" }}</span
+              >
+            </li>
+            <br />
+            <button class="btn btn-primary" (click)="activate()">Ativar</button>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

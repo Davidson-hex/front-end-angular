@@ -1,0 +1,100 @@
+<app-headers></app-headers>
+<div *ngIf="isRent === true; else warning">
+  <div *ngIf="rent$ | async as rent">
+    <div class="container">
+      <div class="form-group">
+        <div class="col-md-6 offset-md-3 centered">
+          <ul class="list-group">
+            <h4 class="text-center">Livro locado</h4>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Id
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ rent.id }}</span
+              >
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Id do livro:
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ rent.id_livro }}</span
+              >
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Id do usuário:
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ rent.id_usuario }}</span
+              >
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Status:
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ rent.status }}</span
+              >
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Locação:
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ rent.locacao }}</span
+              >
+            </li>
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              Previsão de devolução:
+              <span
+                class="badge badge-primary badge-pill"
+                style="color: black"
+                >{{ rent.previsao_devolucao | date: "dd-MM-yyyy" }}</span
+              >
+            </li>
+          </ul>
+          <button class="btn btn-primary form-control" (click)="returnBook()">
+            Devolver
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #warning>
+  <div class="container">
+    <div class="form-group">
+      <div class="col-md-6 offset-md-3 centered">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <h5 class="card-title text-center">Nenhum livro locado</h5>
+            <p class="card-text">
+              Você não possui nenhum livro locado? Veja os livros disponíveis em
+              nossa bibioteca acessando o link abaixo. Escolha o que mais te
+              chamar atenção!
+            </p>
+            <a
+              [routerLink]="['listadelivros']"
+              class="btn btn-success form-control"
+              >Lista de livros</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

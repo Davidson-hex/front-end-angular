@@ -1,0 +1,50 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand">
+      <i
+        class="fa fa-bars mr-2"
+        (click)="menu.openMenu()"
+        (keyup.space)="menu.openMenu()"
+      ></i>
+      <a style="text-decoration: none" [routerLink]="['/livros']">Biblioteca</a>
+    </a>
+    <app-menu #menu>
+      <div class="list-group">
+        <a
+          [routerLink]="['/livros']"
+          class="list-group-item list-group-item-action"
+          >Início</a
+        >
+        <a
+          [routerLink]="['/livros/novolivro']"
+          class="list-group-item list-group-item-action"
+          >Novo Livro</a
+        >
+        <a
+          [routerLink]="['/livros/listadelivros']"
+          class="list-group-item list-group-item-action"
+          >Lista de Livros</a
+        >
+
+        <a
+          [routerLink]="['/livros/movimentacao']"
+          class="list-group-item list-group-item-action"
+          >Movimentação</a
+        >
+      </div>
+    </app-menu>
+    <div *ngIf="user$ | async as user">
+      <div *ngIf="user.nome; else login">
+        <i class="fa fa-user-circle mr-1"> </i>
+        <a class="btn btn-outline-dark disabled">{{ user.nome }} </a>
+        <a class="btn btn-link" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <ng-template #login>
+    <span class="navbar-text">
+      <a [routerLink]="['']">Login</a>
+    </span>
+  </ng-template>
+</header>

@@ -1,0 +1,87 @@
+<h4 class="text-center">Registre-se!</h4>
+<form class="container" [formGroup]="newUserForm" (submit)="register()">
+  <div class="form-group">
+    <div class="col-md-6 offset-md-3 centered">
+      <label for="exampleInputEmail1">Nome</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputNome"
+        aria-describedby="emailHelp"
+        placeholder="Seu nome"
+        name="nome"
+        formControlName="nome"
+        required
+      />
+      <app-message
+        *ngIf="newUserForm.get('nome')?.errors?.['required'] && newUserForm.get('nome')?.touched"
+        message="Nome obrigatório"
+      ></app-message>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-6 offset-md-3 centered">
+      <label for="exampleInputEmail1">Endereço de email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Seu email"
+        name="email"
+        formControlName="email"
+        required
+        (blur)="verify()"
+      />
+      <app-message
+        *ngIf="!!verifyExists"
+        message="E-mail já cadastrado"
+      ></app-message>
+      <app-message
+        *ngIf="newUserForm.get('email')?.errors?.['required'] && newUserForm.get('email')?.touched"
+        message="E-mail obrigatório"
+      ></app-message>
+      <app-message
+        *ngIf="newUserForm.get('email')?.errors?.['email'] && newUserForm.get('email')?.touched"
+        message="E-mail no formato incorreto"
+      ></app-message>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-6 offset-md-3 centered">
+      <label for="exampleInputPassword1">Senha</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Senha"
+        name="senha"
+        formControlName="senha"
+        required
+      />
+      <app-message
+        *ngIf="newUserForm.get('senha')?.errors?.['required'] && newUserForm.get('senha')?.touched"
+        message="Senha obrigatório"
+      ></app-message>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-6 offset-md-3 centered">
+      <br />
+      <button
+        type="submit"
+        class="btn btn-primary form-control"
+        [disabled]="newUserForm.invalid"
+      >
+        Cadastrar
+      </button>
+    </div>
+  </div>
+</form>
+<div class="container">
+  <div class="form-group">
+    <div class="col-md-6 offset-md-3 centered">
+      <p>Já é um usuário?<a [routerLink]="['']">Faça Login</a></p>
+    </div>
+  </div>
+</div>
